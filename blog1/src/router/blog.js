@@ -21,7 +21,6 @@ const handleBlogRouter = (req, res) => {
 
   // 创建博客
   if (method === "POST" && req.path === "/api/blog/new") {
-    console.log(req.body)
     const data = newBlog(req.body);
     return new SuccessModel(data);
   }
