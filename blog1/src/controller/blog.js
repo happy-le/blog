@@ -41,8 +41,18 @@ const newBlog = (blogData = {}) => {
   };
 };
 
+const updateBlog  = (id, blogData = {}) => {
+  return false
+}
+
+const deleteBlog = (id) => {
+  return true
+}
+
 module.exports = {
   getList,
   getDetail,
   newBlog,
+  updateBlog,
+  deleteBlog
 };
