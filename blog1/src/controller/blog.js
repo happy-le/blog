@@ -1,29 +1,19 @@
+const { exec } = require("../db/mysql");
+
+// 获取博客列表
 const getList = (author, keyword) => {
-  return [
-    {
-      id: 1,
-      title: "标题一",
-      content: "内容一",
-      createTime: 1600233926431,
-      author: "作者一",
-    },
-    {
-      id: 2,
-      title: "标题二",
-      content: "内容二",
-      createTime: 1600233962073,
-      author: "作者二",
-    },
-    {
-      id: 2,
-      title: "标题三",
-      content: "内容三",
-      createTime: 1600233963073,
-      author: "作者三",
-    },
-  ];
+  let sql = `select * from blogs where 1=1 `;
+  if (author) {
+    sql += `and author='${author}' `;
+  }
+  if (keyword) {
+    sql += `and title like '%${keyword}%' `;
+  }
+  sql += `order by createtime desc`;
+  return exec(sql);
 };
 
+// 获取博客详情
 const getDetail = (id) => {
   return {
     id: 1,
@@ -34,6 +24,7 @@ const getDetail = (id) => {
   };
 };
 
+// 新建博客
 const newBlog = (blogData = {}) => {
   // blogData包含title,content等属性
   return {
@@ -41,18 +32,18 @@ const newBlog = (blogData = {}) => {
   };
 };
 
-const updateBlog  = (id, blogData = {}) => {
-  return false
-}
+const updateBlog = (id, blogData = {}) => {
+  return false;
+};
 
 const deleteBlog = (id) => {
-  return true
-}
+  return true;
+};
 
 module.exports = {
   getList,
   getDetail,
   newBlog,
   updateBlog,
-  deleteBlog
+  deleteBlog,
 };
