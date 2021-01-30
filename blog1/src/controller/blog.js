@@ -15,21 +15,23 @@ const getList = (author, keyword) => {
 
 // 获取博客详情
 const getDetail = (id) => {
-  return {
-    id: 1,
-    title: "标题一",
-    content: "内容一",
-    createTime: 1600233926431,
-    author: "作者一",
-  };
+  let sql = `select * from blogs where id='${id}'`;
+  return exec(sql).then((rows) => rows[0]);
 };
 
 // 新建博客
 const newBlog = (blogData = {}) => {
   // blogData包含title,content等属性
-  return {
-    id: 3,
-  };
+  const title = blogData.title;
+  const content = blogData.content;
+  const author = blogData.author;
+  const createtime = Date.now();
+
+  let sql = `insert into blogs (title, content, author, createtime) values ('${title}', '${content}', '${author}', '${createtime}' )`;
+
+  return exec(sql).then((insertData) => {
+    return {id: insertData.insertId};
+  });
 };
 
 const updateBlog = (id, blogData = {}) => {

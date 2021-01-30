@@ -15,25 +15,25 @@ const handleBlogRouter = (req, res) => {
   if (method === "GET" && req.path === "/api/blog/list") {
     const author = req.query.author || "";
     const keyword = req.query.keyword || "";
-    
-    return getList(author, keyword)
-    .then(data => {
+
+    return getList(author, keyword).then((data) => {
       return new SuccessModel(data);
-    }).catch(err => {
-      console.log(err)
-    })
+    });
   }
 
   // 获取博客详情
   if (method === "GET" && req.path === "/api/blog/detail") {
-    const data = getDetail(id);
-    return new SuccessModel(data);
+    return getDetail(id).then((data) => {
+      return new SuccessModel(data);
+    });
   }
 
   // 创建博客
   if (method === "POST" && req.path === "/api/blog/new") {
-    const data = newBlog(req.body);
-    return new SuccessModel(data);
+    const author = "zhangsan";
+    return newBlog({ ...req.body, author }).then((data) => {
+      return new SuccessModel(data);
+    });
   }
 
   // 更新博客
