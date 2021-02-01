@@ -1,0 +1,586 @@
+Last login: Thu Jan 28 16:18:49 on ttys002
+➜  ~ mysql -uroot -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.21 Homebrew
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show database
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show tables;
+ERROR 1046 (3D000): No database selected
+mysql> show dataTables;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dataTables' at line 1
+mysql> exit
+Bye
+➜  ~ mysql
+ERROR 1045 (28000): Access denied for user 'xule'@'localhost' (using password: NO)
+➜  ~ mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 23
+Server version: 8.0.21 Homebrew
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show database
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| myblog             |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.36 sec)
+
+mysql> exit;
+Bye
+➜  ~ select Version()
+select function> ；
+➜  ~ mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 27
+Server version: 8.0.21 Homebrew
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select Version()
+    -> ;
++-----------+
+| Version() |
++-----------+
+| 8.0.21    |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> exit;
+Bye
+➜  ~ mysqladmin -u root -h localhost -p  "123456"
+Enter password:
+mysqladmin: connect to server at 'localhost' failed
+error: 'Access denied for user 'root'@'localhost' (using password: YES)'
+➜  ~ mysqladmin -u root -h localhost -p ""  "123456"
+Enter password:
+mysqladmin: Unknown command: ''
+➜  ~ mysqladmin -u root -h localhost -p ""  "123456"
+Enter password:
+mysqladmin: connect to server at 'localhost' failed
+error: 'Access denied for user 'root'@'localhost' (using password: YES)'
+➜  ~ mysqladmin -u root -p ""  "123456"
+Enter password:
+mysqladmin: Unknown command: ''
+➜  ~ mysqladmin -u root -p ""
+Enter password:
+mysqladmin: connect to server at 'localhost' failed
+error: 'Access denied for user 'root'@'localhost' (using password: YES)'
+➜  ~ mysqladmin -u root -p
+mysqladmin  Ver 8.0.21 for osx10.15 on x86_64 (Homebrew)
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Administration program for the mysqld daemon.
+Usage: mysqladmin [OPTIONS] command command....
+  --bind-address=name IP address to bind to.
+  -c, --count=#       Number of iterations to make. This works with -i
+                      (--sleep) only.
+  -#, --debug[=#]     This is a non-debug version. Catch this and exit.
+  --debug-check       This is a non-debug version. Catch this and exit.
+  --debug-info        This is a non-debug version. Catch this and exit.
+  -f, --force         Don't ask for confirmation on drop database; with
+                      multiple commands, continue even if an error occurs.
+  -C, --compress      Use compression in server/client protocol.
+  --character-sets-dir=name
+                      Directory for character set files.
+  --default-character-set=name
+                      Set the default character set.
+  -?, --help          Display this help and exit.
+  -h, --host=name     Connect to host.
+  -b, --no-beep       Turn off beep on error.
+  -p, --password[=name]
+                      Password to use when connecting to server. If password is
+                      not given it's asked from the tty.
+  -P, --port=#        Port number to use for connection or 0 for default to, in
+                      order of preference, my.cnf, $MYSQL_TCP_PORT,
+                      /etc/services, built-in default (3306).
+  --protocol=name     The protocol to use for connection (tcp, socket, pipe,
+                      memory).
+  -r, --relative      Show difference between current and previous values when
+                      used with -i. Currently only works with extended-status.
+  -s, --silent        Silently exit if one can't connect to server.
+  -S, --socket=name   The socket file to use for connection.
+  -i, --sleep=#       Execute commands repeatedly with a sleep between.
+  --ssl-mode=name     SSL connection mode.
+  --ssl-ca=name       CA file in PEM format.
+  --ssl-capath=name   CA directory.
+  --ssl-cert=name     X509 cert in PEM format.
+  --ssl-cipher=name   SSL cipher to use.
+  --ssl-key=name      X509 key in PEM format.
+  --ssl-crl=name      Certificate revocation list.
+  --ssl-crlpath=name  Certificate revocation list path.
+  --tls-version=name  TLS version to use, permitted values are: TLSv1, TLSv1.1,
+                      TLSv1.2, TLSv1.3
+  --ssl-fips-mode=name
+                      SSL FIPS mode (applies only for OpenSSL); permitted
+                      values are: OFF, ON, STRICT
+  --tls-ciphersuites=name
+                      TLS v1.3 cipher to use.
+  --server-public-key-path=name
+                      File path to the server public RSA key in PEM format.
+  --get-server-public-key
+                      Get server public key
+  -u, --user=name     User for login if not current user.
+  -v, --verbose       Write more information.
+  -V, --version       Output version information and exit.
+  -E, --vertical      Print output vertically. Is similar to --relative, but
+                      prints output vertically.
+  -w, --wait[=#]      Wait and retry if connection is down.
+  --connect-timeout=#
+  --shutdown-timeout=#
+  --plugin-dir=name   Directory for client-side plugins.
+  --default-auth=name Default authentication client-side plugin to use.
+  --enable-cleartext-plugin
+                      Enable/disable the clear text authentication plugin.
+  --show-warnings     Show warnings after execution
+  --compression-algorithms=name
+                      Use compression algorithm in server/client protocol.
+                      Valid values are any combination of
+                      'zstd','zlib','uncompressed'.
+  --zstd-compression-level=#
+                      Use this compression level in the client/server protocol,
+                      in case --compression-algorithms=zstd. Valid range is
+                      between 1 and 22, inclusive. Default is 3.
+
+Variables (--variable-name=value)
+and boolean options {FALSE|TRUE}  Value (after reading options)
+--------------------------------- ----------------------------------------
+bind-address                      (No default value)
+count                             0
+force                             FALSE
+compress                          FALSE
+character-sets-dir                (No default value)
+default-character-set             auto
+host                              (No default value)
+no-beep                           FALSE
+port                              0
+relative                          FALSE
+socket                            (No default value)
+sleep                             0
+ssl-ca                            (No default value)
+ssl-capath                        (No default value)
+ssl-cert                          (No default value)
+ssl-cipher                        (No default value)
+ssl-key                           (No default value)
+ssl-crl                           (No default value)
+ssl-crlpath                       (No default value)
+tls-version                       (No default value)
+tls-ciphersuites                  (No default value)
+server-public-key-path            (No default value)
+get-server-public-key             FALSE
+user                              root
+verbose                           FALSE
+vertical                          FALSE
+connect-timeout                   43200
+shutdown-timeout                  3600
+plugin-dir                        (No default value)
+default-auth                      (No default value)
+enable-cleartext-plugin           FALSE
+show-warnings                     FALSE
+compression-algorithms            (No default value)
+zstd-compression-level            3
+
+Default options are read from the following files in the given order:
+/etc/my.cnf /etc/mysql/my.cnf /usr/local/etc/my.cnf ~/.my.cnf
+The following groups are read: mysqladmin client
+The following options may be given as the first argument:
+--print-defaults        Print the program argument list and exit.
+--no-defaults           Don't read default options from any option file,
+                        except for login file.
+--defaults-file=#       Only read default options from the given file #.
+--defaults-extra-file=# Read this file after the global files are read.
+--defaults-group-suffix=#
+                        Also read groups with concat(group, suffix)
+--login-path=#          Read this path from the login file.
+
+Where command is a one or more of: (Commands may be shortened)
+  create databasename	Create a new database
+  debug			Instruct server to write debug information to log
+  drop databasename	Delete a database and all its tables
+  extended-status       Gives an extended status message from the server
+  flush-hosts           Flush all cached hosts
+  flush-logs            Flush all logs
+  flush-status		Clear status variables
+  flush-tables          Flush all tables
+  flush-threads         Flush the thread cache
+  flush-privileges      Reload grant tables (same as reload)
+  kill id,id,...	Kill mysql threads
+  password [new-password] Change old password to new-password in current format
+  ping			Check if mysqld is alive
+  processlist		Show list of active threads in server
+  reload		Reload grant tables
+  refresh		Flush all tables and close and open logfiles
+  shutdown		Take server down
+  status		Gives a short status message from the server
+  start-slave		Start slave
+  stop-slave		Stop slave
+  variables             Prints variables available
+  version		Get version info from server
+➜  ~ mysqladmin -u root -p
+mysqladmin  Ver 8.0.21 for osx10.15 on x86_64 (Homebrew)
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Administration program for the mysqld daemon.
+Usage: mysqladmin [OPTIONS] command command....
+  --bind-address=name IP address to bind to.
+  -c, --count=#       Number of iterations to make. This works with -i
+                      (--sleep) only.
+  -#, --debug[=#]     This is a non-debug version. Catch this and exit.
+  --debug-check       This is a non-debug version. Catch this and exit.
+  --debug-info        This is a non-debug version. Catch this and exit.
+  -f, --force         Don't ask for confirmation on drop database; with
+                      multiple commands, continue even if an error occurs.
+  -C, --compress      Use compression in server/client protocol.
+  --character-sets-dir=name
+                      Directory for character set files.
+  --default-character-set=name
+                      Set the default character set.
+  -?, --help          Display this help and exit.
+  -h, --host=name     Connect to host.
+  -b, --no-beep       Turn off beep on error.
+  -p, --password[=name]
+                      Password to use when connecting to server. If password is
+                      not given it's asked from the tty.
+  -P, --port=#        Port number to use for connection or 0 for default to, in
+                      order of preference, my.cnf, $MYSQL_TCP_PORT,
+                      /etc/services, built-in default (3306).
+  --protocol=name     The protocol to use for connection (tcp, socket, pipe,
+                      memory).
+  -r, --relative      Show difference between current and previous values when
+                      used with -i. Currently only works with extended-status.
+  -s, --silent        Silently exit if one can't connect to server.
+  -S, --socket=name   The socket file to use for connection.
+  -i, --sleep=#       Execute commands repeatedly with a sleep between.
+  --ssl-mode=name     SSL connection mode.
+  --ssl-ca=name       CA file in PEM format.
+  --ssl-capath=name   CA directory.
+  --ssl-cert=name     X509 cert in PEM format.
+  --ssl-cipher=name   SSL cipher to use.
+  --ssl-key=name      X509 key in PEM format.
+  --ssl-crl=name      Certificate revocation list.
+  --ssl-crlpath=name  Certificate revocation list path.
+  --tls-version=name  TLS version to use, permitted values are: TLSv1, TLSv1.1,
+                      TLSv1.2, TLSv1.3
+  --ssl-fips-mode=name
+                      SSL FIPS mode (applies only for OpenSSL); permitted
+                      values are: OFF, ON, STRICT
+  --tls-ciphersuites=name
+                      TLS v1.3 cipher to use.
+  --server-public-key-path=name
+                      File path to the server public RSA key in PEM format.
+  --get-server-public-key
+                      Get server public key
+  -u, --user=name     User for login if not current user.
+  -v, --verbose       Write more information.
+  -V, --version       Output version information and exit.
+  -E, --vertical      Print output vertically. Is similar to --relative, but
+                      prints output vertically.
+  -w, --wait[=#]      Wait and retry if connection is down.
+  --connect-timeout=#
+  --shutdown-timeout=#
+  --plugin-dir=name   Directory for client-side plugins.
+  --default-auth=name Default authentication client-side plugin to use.
+  --enable-cleartext-plugin
+                      Enable/disable the clear text authentication plugin.
+  --show-warnings     Show warnings after execution
+  --compression-algorithms=name
+                      Use compression algorithm in server/client protocol.
+                      Valid values are any combination of
+                      'zstd','zlib','uncompressed'.
+  --zstd-compression-level=#
+                      Use this compression level in the client/server protocol,
+                      in case --compression-algorithms=zstd. Valid range is
+                      between 1 and 22, inclusive. Default is 3.
+
+Variables (--variable-name=value)
+and boolean options {FALSE|TRUE}  Value (after reading options)
+--------------------------------- ----------------------------------------
+bind-address                      (No default value)
+count                             0
+force                             FALSE
+compress                          FALSE
+character-sets-dir                (No default value)
+default-character-set             auto
+host                              (No default value)
+no-beep                           FALSE
+port                              0
+relative                          FALSE
+socket                            (No default value)
+sleep                             0
+ssl-ca                            (No default value)
+ssl-capath                        (No default value)
+ssl-cert                          (No default value)
+ssl-cipher                        (No default value)
+ssl-key                           (No default value)
+ssl-crl                           (No default value)
+ssl-crlpath                       (No default value)
+tls-version                       (No default value)
+tls-ciphersuites                  (No default value)
+server-public-key-path            (No default value)
+get-server-public-key             FALSE
+user                              root
+verbose                           FALSE
+vertical                          FALSE
+connect-timeout                   43200
+shutdown-timeout                  3600
+plugin-dir                        (No default value)
+default-auth                      (No default value)
+enable-cleartext-plugin           FALSE
+show-warnings                     FALSE
+compression-algorithms            (No default value)
+zstd-compression-level            3
+
+Default options are read from the following files in the given order:
+/etc/my.cnf /etc/mysql/my.cnf /usr/local/etc/my.cnf ~/.my.cnf
+The following groups are read: mysqladmin client
+The following options may be given as the first argument:
+--print-defaults        Print the program argument list and exit.
+--no-defaults           Don't read default options from any option file,
+                        except for login file.
+--defaults-file=#       Only read default options from the given file #.
+--defaults-extra-file=# Read this file after the global files are read.
+--defaults-group-suffix=#
+                        Also read groups with concat(group, suffix)
+--login-path=#          Read this path from the login file.
+
+Where command is a one or more of: (Commands may be shortened)
+  create databasename	Create a new database
+  debug			Instruct server to write debug information to log
+  drop databasename	Delete a database and all its tables
+  extended-status       Gives an extended status message from the server
+  flush-hosts           Flush all cached hosts
+  flush-logs            Flush all logs
+  flush-status		Clear status variables
+  flush-tables          Flush all tables
+  flush-threads         Flush the thread cache
+  flush-privileges      Reload grant tables (same as reload)
+  kill id,id,...	Kill mysql threads
+  password [new-password] Change old password to new-password in current format
+  ping			Check if mysqld is alive
+  processlist		Show list of active threads in server
+  reload		Reload grant tables
+  refresh		Flush all tables and close and open logfiles
+  shutdown		Take server down
+  status		Gives a short status message from the server
+  start-slave		Start slave
+  stop-slave		Stop slave
+  variables             Prints variables available
+  version		Get version info from server
+➜  ~ mysqladmin -u root -p ""
+Enter password:
+mysqladmin: connect to server at 'localhost' failed
+error: 'Access denied for user 'root'@'localhost' (using password: YES)'
+➜  ~ mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 36
+Server version: 8.0.21 Homebrew
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| myblog             |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.05 sec)
+
+mysql> use mysql
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables
+    -> ;
++---------------------------+
+| Tables_in_mysql           |
++---------------------------+
+| columns_priv              |
+| component                 |
+| db                        |
+| default_roles             |
+| engine_cost               |
+| func                      |
+| general_log               |
+| global_grants             |
+| gtid_executed             |
+| help_category             |
+| help_keyword              |
+| help_relation             |
+| help_topic                |
+| innodb_index_stats        |
+| innodb_table_stats        |
+| password_history          |
+| plugin                    |
+| procs_priv                |
+| proxies_priv              |
+| role_edges                |
+| server_cost               |
+| servers                   |
+| slave_master_info         |
+| slave_relay_log_info      |
+| slave_worker_info         |
+| slow_log                  |
+| tables_priv               |
+| time_zone                 |
+| time_zone_leap_second     |
+| time_zone_name            |
+| time_zone_transition      |
+| time_zone_transition_type |
+| user                      |
++---------------------------+
+33 rows in set (0.01 sec)
+
+mysql> select * from user
+    -> ;
++-----------+------------------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--------------+------------+-----------------------+------------------+--------------+-----------------+------------------+------------------+----------------+---------------------+--------------------+------------------+------------+--------------+------------------------+----------+------------------------+--------------------------+----------------------------+---------------+-------------+-----------------+----------------------+-----------------------+------------------------------------------------------------------------+------------------+-----------------------+-------------------+----------------+------------------+----------------+------------------------+---------------------+--------------------------+-----------------+
+| Host      | User             | Select_priv | Insert_priv | Update_priv | Delete_priv | Create_priv | Drop_priv | Reload_priv | Shutdown_priv | Process_priv | File_priv | Grant_priv | References_priv | Index_priv | Alter_priv | Show_db_priv | Super_priv | Create_tmp_table_priv | Lock_tables_priv | Execute_priv | Repl_slave_priv | Repl_client_priv | Create_view_priv | Show_view_priv | Create_routine_priv | Alter_routine_priv | Create_user_priv | Event_priv | Trigger_priv | Create_tablespace_priv | ssl_type | ssl_cipher             | x509_issuer              | x509_subject               | max_questions | max_updates | max_connections | max_user_connections | plugin                | authentication_string                                                  | password_expired | password_last_changed | password_lifetime | account_locked | Create_role_priv | Drop_role_priv | Password_reuse_history | Password_reuse_time | Password_require_current | User_attributes |
++-----------+------------------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--------------+------------+-----------------------+------------------+--------------+-----------------+------------------+------------------+----------------+---------------------+--------------------+------------------+------------+--------------+------------------------+----------+------------------------+--------------------------+----------------------------+---------------+-------------+-----------------+----------------------+-----------------------+------------------------------------------------------------------------+------------------+-----------------------+-------------------+----------------+------------------+----------------+------------------------+---------------------+--------------------------+-----------------+
+| localhost | mysql.infoschema | Y           | N           | N           | N           | N           | N         | N           | N             | N            | N         | N          | N               | N          | N          | N            | N          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          | 0x                     | 0x                       | 0x                         |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | N                | 2020-09-28 13:29:04   |              NULL | Y              | N                | N              |                   NULL |                NULL | NULL                     | NULL            |
+| localhost | mysql.session    | N           | N           | N           | N           | N           | N         | N           | Y             | N            | N         | N          | N               | N          | N          | N            | Y          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          | 0x                     | 0x                       | 0x                         |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | N                | 2020-09-28 13:29:04   |              NULL | Y              | N                | N              |                   NULL |                NULL | NULL                     | NULL            |
+| localhost | mysql.sys        | N           | N           | N           | N           | N           | N         | N           | N             | N            | N         | N          | N               | N          | N          | N            | N          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          | 0x                     | 0x                       | 0x                         |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | N                | 2020-09-28 13:29:04   |              NULL | Y              | N                | N              |                   NULL |                NULL | NULL                     | NULL            |
+| localhost | root             | Y           | Y           | Y           | Y           | Y           | Y         | Y           | Y             | Y            | Y         | Y          | Y               | Y          | Y          | Y            | Y          | Y                     | Y                | Y            | Y               | Y                | Y                | Y              | Y                   | Y                  | Y                | Y          | Y            | Y                      |          | 0x                     | 0x                       | 0x                         |             0 |           0 |               0 |                    0 | caching_sha2_password |                                                                        | N                | 2020-09-28 13:29:04   |              NULL | N              | Y                | Y              |                   NULL |                NULL | NULL                     | NULL            |
++-----------+------------------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--------------+------------+-----------------------+------------------+--------------+-----------------+------------------+------------------+----------------+---------------------+--------------------+------------------+------------+--------------+------------------------+----------+------------------------+--------------------------+----------------------------+---------------+-------------+-----------------+----------------------+-----------------------+------------------------------------------------------------------------+------------------+-----------------------+-------------------+----------------+------------------+----------------+------------------------+---------------------+--------------------------+-----------------+
+4 rows in set (0.00 sec)
+
+mysql> exit;
+Bye
+➜  ~ mysqladmin -u root -h localhost -p password  "123456"
+Enter password:
+mysqladmin: [Warning] Using a password on the command line interface can be insecure.
+Warning: Since password will be sent to server in plain text, use ssl connection to ensure password safety.
+➜  ~ mysql -u root
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
+➜  ~ mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 39
+Server version: 8.0.21 Homebrew
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> flush privileges;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456'
+    -> ;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> exit；
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'exit；' at line 1
+mysql> exit;
+Bye
+➜  ~ cd ..
+➜  /Users ll
+total 0
+drwxrwxrwt   7 root  wheel   224B  1  1  2020 Shared
+drwxr-xr-x+ 47 xule  staff   1.5K  2  1 17:04 xule
+➜  /Users cd
+➜  ~ ll
+total 0
+drwx------@  3 xule  staff    96B  1 29 14:03 Applications
+drwx------@ 14 xule  staff   448B  2  1 11:23 Desktop
+drwx------@  8 xule  staff   256B  2  1 10:35 Documents
+drwx------+ 50 xule  staff   1.6K  2  1 14:20 Downloads
+drwx------@ 88 xule  staff   2.8K  1 29 19:05 Library
+drwx------+  4 xule  staff   128B  9 22 19:21 Movies
+drwx------+  6 xule  staff   192B 12 15 20:21 Music
+drwx------+  6 xule  staff   192B 11 16 13:31 Pictures
+drwxr-xr-x+  4 xule  staff   128B  9 22 13:27 Public
+drwxr-xr-x  13 xule  staff   416B 12 15 20:21 WeChatProjects
+drwxr-xr-x  13 xule  staff   416B  1 30 10:12 code
+drwxr-xr-x   8 xule  staff   256B  1 28 16:42 my_code
+drwxr-xr-x   6 xule  staff   192B  1 27 11:45 xulele
+drwxr-xr-x  33 xule  staff   1.0K  2  1 14:24 视频
+➜  ~ cd code
+➜  code ll
+total 8
+drwxr-xr-x   8 xule  staff   256B 12  8 10:36 LP_apk
+drwxr-xr-x  20 xule  staff   640B  1 27 13:42 ai-image-identify
+drwxr-xr-x  17 xule  staff   544B 12 15 20:21 ikingtec-mes
+drwxr-xr-x   7 xule  staff   224B  1 26 15:14 ikingtec-mes-app
+drwxr-xr-x  29 xule  staff   928B  1 26 11:31 ikingtec-mes-web
+drwxr-xr-x  14 xule  staff   448B 12 17 14:05 ikingtec-station
+-rw-r--r--   1 xule  staff   2.2K 12  7 10:43 mesPad.keystore
+drwxr-xr-x  11 xule  staff   352B 12 15 20:21 outsource_mini_program
+drwxr-xr-x  19 xule  staff   608B  1 20 17:58 smart_grid_saas
+drwxr-xr-x  17 xule  staff   544B 12 19 12:12 vue-standard
+➜  code git clone git@git.ikingtec.cn:xule/kcp_api.git
+Cloning into 'kcp_api'...
+remote: Enumerating objects: 137, done.
+remote: Counting objects: 100% (137/137), done.
+remote: Compressing objects: 100% (112/112), done.
+remote: Total 137 (delta 28), reused 98 (delta 7), pack-reused 0
+Receiving objects: 100% (137/137), 149.70 KiB | 1.74 MiB/s, done.
+Resolving deltas: 100% (28/28), done.
+➜  code git clone git@git.ikingtec.cn:xule/kcp.git
+Cloning into 'kcp'...
+remote: Enumerating objects: 140, done.
+remote: Counting objects: 100% (140/140), done.
+remote: Compressing objects: 100% (126/126), done.
+remote: Total 140 (delta 17), reused 98 (delta 6), pack-reused 0
+Receiving objects: 100% (140/140), 2.68 MiB | 671.00 KiB/s, done.
+Resolving deltas: 100% (17/17), done.
+➜  code

@@ -1,4 +1,6 @@
 const querystring = require("querystring");
+const { access } = require("./src/utils/log");
+
 const handleBlogRouter = require("./src/router/blog");
 const handleUserRouter = require("./src/router/user");
 
@@ -28,6 +30,13 @@ const getPostData = (req) => {
 };
 
 const serverHandle = (req, res) => {
+  // 记录access Log
+  access(
+    `${req.method} -- ${req.url} -- ${
+      req.headers["user-agent"]
+    } -- ${Date.now()}`
+  );
+
   // 设置返回格式JSON
   res.setHeader("Content-type", "application/json");
 
@@ -50,7 +59,6 @@ const serverHandle = (req, res) => {
     value = arr[1].trim();
     req.cookie[key] = value;
   });
-  console.log("req.cookie:", req.cookie);
 
   // 处理postData
   getPostData(req).then((postData) => {
@@ -82,5 +90,3 @@ const serverHandle = (req, res) => {
 };
 
 module.exports = serverHandle;
-
-// process.env.NODE_ENV
