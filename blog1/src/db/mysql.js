@@ -28,5 +28,6 @@ function exec(sql) {
 
 module.exports = {
   exec,
+  escape: mysql.escape
 };
 
