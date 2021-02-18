@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <input v-model="password" />
     <input v-model="username" />
+    <input v-model="password" />
     <button @click="submit">登陆</button>
   </div>
 </template>
@@ -11,8 +11,8 @@ import { login } from "@/api/blog";
 export default {
   data() {
     return {
-      password: "",
-      username: ""
+      username: "zhangsan",
+      password: "123"
     };
   },
   methods: {

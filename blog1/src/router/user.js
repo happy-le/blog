@@ -15,11 +15,13 @@ const handleUserRouter = (req, res) => {
   // 登录接口
   if (method === "POST" && req.path === "/api/user/login") {
     const { username, password } = req.body;
-    // const { username, password } = req.query;
     return login(username, password).then((data) => {
       if (data.username) {
         // 操作cookie
-        res.setHeader("Set-Cookie", `username=${username}; path=/; httpOnly; expires=${getCookieExpires()}`);
+        res.setHeader(
+          "Set-Cookie",
+          `username=${username}; path=/; httpOnly; expires=${getCookieExpires()}`
+        );
 
         return new SuccessModel();
       } else {
